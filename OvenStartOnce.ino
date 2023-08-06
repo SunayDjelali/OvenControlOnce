@@ -38,7 +38,7 @@ CurrentControlerState = digitalRead(InputPinsButton[1]);
 //here
 if(ButtonState == HIGH && (CurrentControlerState == HIGH || CurrentControlerState == LOW)){
   digitalWrite(RelayPins[0], HIGH);
-  //digitalWrite(RelayPins[1], HIGH);
+  digitalWrite(RelayPins[1], HIGH);
   } else {
     //Turn off RelayPins[0] when CurrentControlerState changes from HIGH to LOW
       if (digitalRead(RelayPins[0]) == HIGH && LastControlerState == HIGH && CurrentControlerState == LOW) 
@@ -50,6 +50,6 @@ if(ButtonState == HIGH && (CurrentControlerState == HIGH || CurrentControlerStat
 LastControlerState = CurrentControlerState;
   
 //this delay is for jast resting CPU  
-delay(500);
+delay(400);
 
 }
