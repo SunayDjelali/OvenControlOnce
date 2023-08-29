@@ -1,12 +1,12 @@
-//!!!!Atttencion Relay BOAR whit 4 Blue relay work reverse logic LOW=HIGH !!!!
+//!!!!Atttencion Relay BOARD whit 4 Blue relay work reverse logic LOW=HIGH !!!!
 //Includes
 #include <Arduino.h>
 #include <Wire.h>
 
-//Set pin inputs for relay in Array (Digital Pins)
+//Set pin outputs for relay in Array (Digital Pins)
 int RelayPins[] = { 2, 3, 4, 5};
 
-//Set pin outputs in Array (Digital Pins)
+//Set pin inputs in Array (Digital Pins)
 int InputPinsButton[] = { 6, 7};
 //Set variable for take information state Oven Cotntrole what made now warm up or not 
 int LastControlerState = HIGH;
@@ -37,7 +37,7 @@ void loop() {
 //|| CurrentControlerState == LOW,(CurrentControlerState == HIGH || CurrentControlerState == LOW)
   if  (ButtonState == HIGH && CurrentControlerState == HIGH){
       digitalWrite(RelayPins[0], LOW);
-      digitalWrite(RelayPins[1], LOW);
+      digitalWrite(RelayPins[1], HIGH);
       digitalWrite(RelayPins[2], LOW);
       digitalWrite(RelayPins[3], LOW);
   } 
@@ -46,7 +46,7 @@ void loop() {
       //!!!!!Attentione revers Logic relay otput !!!!
       if (digitalRead(RelayPins[0]) == LOW && LastControlerState == HIGH && CurrentControlerState == LOW){
       digitalWrite(RelayPins[0], HIGH);
-      digitalWrite(RelayPins[1], HIGH);
+      digitalWrite(RelayPins[1], LOW);
       digitalWrite(RelayPins[2], HIGH);
       digitalWrite(RelayPins[3], HIGH);
       } 
